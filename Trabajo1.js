@@ -1,6 +1,7 @@
 class productManager{
 
     #products
+    static #id = 0
 
     constructor(){
 
@@ -12,9 +13,11 @@ class productManager{
 
         if (this.campoObligatorio(title, description, price, thumbnail, code, stock) && this.noDuplicado(code)){
 
+            const idGen = productManager.#id++
+
             const newProduct = {
 
-                id:this.generadorId(),
+                id: idGen,
 
                 title: title,
 
@@ -26,9 +29,12 @@ class productManager{
 
                 code: code,
 
-                stock: stock
+                stock: stock,
+
             }
+           
             this.#products.push(newProduct);
+           
         }
     };
     
@@ -51,7 +57,7 @@ class productManager{
 
         if (this.#products.find((product) => product.code === code ) !== undefined){
 
-            console.error(`Mismo codigo`)
+            console.error(`Ha introducido el mismo codigo de un producto seleccionado previamente`)
 
             return false;
 
@@ -69,48 +75,45 @@ class productManager{
 
     getProductsById(id){
 
-        return this.#products.find((product) => product.id === id );
+        let product = this.#products.find((product) => product.id === id );
+        
+        return product ? product : "No se ha encontrado el producto deseado"
+
     };
 
-    generadorId(){
+   
 
-        let id = 0;
-        if (this.#products.length === 0) {
+    // generadorId(){
 
-            id = 1;
+    //     let id = 0;
+    //     if (this.#products.length === 0) {
+
+    //         id = 1;
             
-        } else {
+    //     } else {
 
-            id = this.#products[this.#products.length - 1].id + 1;
+    //         id = this.#products[this.#products.length - 1].id + 1;
             
-        }
+    //     }
 
-        return id;
+    //     return id;
 
-    }
+    // }
 
 };
 
 let carrito = new productManager();
 
 carrito.addProduct("papa","tuberculo",200,"?",1,15)
-carrito.addProduct("zanahoria","tuberculo",100,"?",3,15)
-carrito.addProduct("cebolla","tuberculo",50,"?",4,15)
-carrito.addProduct("calabaza","tuberculo",25,"?",5,15)
+carrito.addProduct("zanahoria","tuberculo",100,"?",2,15)
+carrito.addProduct("cebolla","tuberculo",50,"?",3,15)
+carrito.addProduct("calabaza","tuberculo",25,"?",4,15)
 
 // mismo producto seleccionado
 carrito.addProduct("papa","tuberculo",200,"?",1,15)
 
-
-
-
 // no completar todos los campos
 carrito.addProduct("zanahoria", "tuberculo",112,"?",15)
 
+
 console.log(carrito.getProductsById(4))
-
-
-
-
-
-
