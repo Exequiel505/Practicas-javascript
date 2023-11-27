@@ -1,0 +1,1 @@
+[{"title":"zanahoria","description":"tuberculo","price":200,"thumbnail":"?","code":2,"stock":15,"id":2},{"title":"cebolla","description":"tuberculo","price":300,"thumbnail":"?","code":3,"stock":15,"id":3},{"title":"calabaza","description":"tuberculo","price":400,"thumbnail":"?","code":4,"stock":15,"id":4}]
