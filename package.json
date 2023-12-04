@@ -1,3 +1,20 @@
 {
-    "type" : "module" 
+  "type": "module",
+  "name": "practicas-javascript",
+  "description": "",
+  "version": "1.0.0",
+  "main": "Trabajo1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server" : "nodemon scr/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
