@@ -4,7 +4,7 @@ export default class ProductManager{
     
     constructor(){
 
-        this.patch = "./productos.txt"
+        this.patch = "./productos.json"
         this.products = []
 
     };
@@ -78,9 +78,18 @@ export default class ProductManager{
         return ( JSON.parse (lectura));
     };
 
-    getProducts = async () => {
-        
+    getProducts = async (limit = 0) => {
+
+        limit = Number (limit);
+
+        if(limit > 0){
+
+            return this.products.slice(0,limit)
+
+        }
+
         return await this.readProducts();
+
 
         
     };
@@ -132,16 +141,18 @@ let carrito = new ProductManager();
 carrito.addProduct("papa","tuberculo",100,"?",1,15);
 carrito.addProduct("zanahoria","tuberculo",200,"?",2,15);
 carrito.addProduct("cebolla","tuberculo",300,"?",3,15);
-carrito.addProduct("calabaza","tuberculo",400,"?",4,15)
-carrito.addProduct("pimiento","tuberculo",500,"?",5,15)
-carrito.addProduct("tomate","tuberculo",600,"?",6,15)
-carrito.addProduct("lechuga","tuberculo",700,"?",7,15)
-carrito.addProduct("alubias","tuberculo",800,"?",8,15)
-carrito.addProduct("huevo","tuberculo",900,"?",9,15)
+// carrito.addProduct("calabaza","tuberculo",400,"?",4,15)
+// carrito.addProduct("pimiento","tuberculo",500,"?",5,15)
+// carrito.addProduct("tomate","tuberculo",600,"?",6,15)
+// carrito.addProduct("lechuga","tuberculo",700,"?",7,15)
+// carrito.addProduct("alubias","tuberculo",800,"?",8,15)
+// carrito.addProduct("huevo","tuberculo",900,"?",9,15)
 // carrito.addProduct("acelga","tuberculo",1000,"?",10,15)
 
+carrito.getProducts()
 
-carrito.getProductsById(4)
+
+// [carrito.getProductsById(4)]
 
 // carrito.deleteProductById(1)
 
@@ -156,3 +167,4 @@ carrito.getProductsById(4)
 //     id: 3
 
 // })
+

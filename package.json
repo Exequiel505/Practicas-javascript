@@ -3,10 +3,10 @@
   "name": "practicas-javascript",
   "description": "",
   "version": "1.0.0",
-  "main": "src/components/ProductManager.js",
+  "main": "ProductManager.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "server" : "nodemon scr/server.js"
+    "dev":"nodemon ./src/app.js",
+    "start" : "node ./src/app.js"
   },
   "keywords": [],
   "author": "",
