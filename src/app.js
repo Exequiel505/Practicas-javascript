@@ -5,23 +5,23 @@ const app = express ();
 
 const PORT = 8080
 
-app.get("./products", async (req, res) =>{
+app.get("/products", async (req, res) =>{
 
     const {limit} = req.query;
 
     const p = new ProductManager();
 
-    return res.json({productos: p.getProducts(limit)})
+    return res.json({productos: await p.getProducts(limit)})
     
 });
 
-app.get("./products/:pid", async (req, res) =>{
+app.get("/products/:pid", async (req, res) =>{
 
     const { pid } = req.params;
 
     const p = new ProductManager();
 
-    return res.json({producto:p.getProductsById(Number(pid))})
+    return res.json({producto: await p.getProductsById(Number(pid))})
 });
 
 app.listen(PORT, () => {

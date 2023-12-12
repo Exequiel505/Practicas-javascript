@@ -89,8 +89,6 @@ export default class ProductManager{
         }
 
         return await this.readProducts();
-
-
         
     };
 
@@ -104,7 +102,7 @@ export default class ProductManager{
             
         } else {
 
-            console.log(respuesta3.find((product) => product.id === id ));
+            return(respuesta3.find((product) => product.id === id ));
             
         };  
 
@@ -127,9 +125,9 @@ export default class ProductManager{
 
     //     let productold = await this.readProducts();
 
-    //     let prodcutsMod = [ {...product, id}, ...productold]
+    //     let productsMod = [ {...product, id}, ...productold]
 
-    //     await fs.writeFile(this.patch, JSON.stringify(prodcutsMod));
+    //     await fs.writeFile(this.patch, JSON.stringify(productsMod));
 
     // };
 
