@@ -1,0 +1,13 @@
+[
+    {
+      "title": "GTA V",
+      "description": "Historia",
+      "price": 60,
+      "thumbnail": "https://ar.pinterest.com/pin/669840144563806754/",
+      "code": "12345",
+      "stock": 5,
+      "category": "Mundo abierto",
+      "status": true,
+      "id": 1
+    }
+  ]
