@@ -4,7 +4,7 @@ import {v4 as uuidv4} from "uuid"
 export class ProductManager{
 
     constructor(){
-        this.path="productos.json"
+        this.path="./products.json"
         this.products = []
     }
     addProduct = async ({title, description, price, thumbnail, code, stock, status, category})=>{
@@ -21,7 +21,7 @@ export class ProductManager{
         return responseJSON
     }
     getProductById = async(id)=>{
-        const response = this.getProducts()
+        const response = await this.getProducts()
         const product = response.find(product => product.id === id)
         if (product) {
             return product
@@ -30,8 +30,8 @@ export class ProductManager{
         } 
     }
     updateProduct = async (id, {...data}) =>{
-        const response = this.getProducts()
-        const index = response.finIndex(product => product.id === id)
+        const response = await this.getProducts()
+        const index = response.findIndex(product => product.id === id)
         if (index !== -1) {
             response[index] = {id,...data}
             await fs.writeFile(this.path, JSON.stringify(response))
@@ -41,8 +41,8 @@ export class ProductManager{
         )
     }
     deleteProduct = async (id)=>{
-        const products = this.getProducts()
-        const index = products.finIndex(product => product.id === id)
+        const products = await this.getProducts()
+        const index = products.findIndex(product => product.id === id)
         if (index !== -1) {
             products.splice(index,1)
             await fs.writeFile(this.path, JSON.stringify(products))
